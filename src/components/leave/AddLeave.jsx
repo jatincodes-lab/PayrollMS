@@ -20,7 +20,7 @@ const AddLeave = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/leave/add",
+        "https://payroll-ms-backend.vercel.app/api/leave/add",
         formData,
         {
           headers: {

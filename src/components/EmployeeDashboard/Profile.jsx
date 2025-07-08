@@ -10,7 +10,7 @@ const Profile = () => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/employee/get/${user?._id}`,
+          `https://payroll-ms-backend.vercel.app/api/employee/get/${user?._id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -42,7 +42,7 @@ const Profile = () => {
         {/* Profile Image */}
         <div>
           <img
-            src={`http://localhost:3000/uploads/${employee.image}`}
+            src={`https://payroll-ms-backend.vercel.app/uploads/${employee.image}`}
             alt="Profile"
             className="w-40 h-40 object-cover rounded-lg border border-[#928DAB]"
           />

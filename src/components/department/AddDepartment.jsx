@@ -18,12 +18,16 @@ const AddDepartment = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/department/add", department, {
-        headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
+      const response = await axios.post(
+        "https://payroll-ms-backend.vercel.app/api/department/add",
+        department,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-      })
-      if (response.data.success) { 
+      );
+      if (response.data.success) {
         navigate("/adminDashboard/departments");
       }
     } catch (error) {

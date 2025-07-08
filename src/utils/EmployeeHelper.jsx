@@ -40,7 +40,7 @@ export const fetchDepartments = async () => {
   let departments;
   try {
     const response = await axios.get(
-      "http://localhost:3000/api/department/getAll",
+      "https://payroll-ms-backend.vercel.app/api/department/getAll",
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,7 +62,7 @@ export const getEmployees = async (_id) => {
   let employees;
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/employee/department/${_id}`,
+      `https://payroll-ms-backend.vercel.app/api/employee/department/${_id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -78,7 +78,6 @@ export const getEmployees = async (_id) => {
   }
   return employees;
 };
-
 
 export const EmployeeButtons = ({ _id }) => {
   const navigate = useNavigate();

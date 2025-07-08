@@ -13,7 +13,7 @@ const Edit = () => {
     const fetchEmployee = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/employee/get/${_id}`,
+          `https://payroll-ms-backend.vercel.app/api/employee/get/${_id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -43,7 +43,7 @@ const Edit = () => {
     const fetchDepartments = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/department/getAll",
+          "https://payroll-ms-backend.vercel.app/api/department/getAll",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +69,7 @@ const Edit = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/employee/update/${_id}`,
+        `https://payroll-ms-backend.vercel.app/api/employee/update/${_id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

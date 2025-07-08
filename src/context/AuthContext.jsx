@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-
 const userContext = React.createContext();
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -14,7 +12,7 @@ const AuthContext = ({ children }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get(
-            "http://localhost:3000/api/auth/verify",
+            "https://payroll-ms-backend.vercel.app/api/auth/verify",
             {
               headers: {
                 authorization: `Bearer ${token}`,
@@ -35,7 +33,7 @@ const AuthContext = ({ children }) => {
         }
       } finally {
         setLoading(false);
-      };
+      }
     };
     verifyUser();
   }, []);

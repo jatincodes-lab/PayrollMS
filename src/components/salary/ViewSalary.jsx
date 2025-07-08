@@ -11,13 +11,13 @@ const ViewSalary = () => {
     const fetchSalary = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/salary/${_id}`,
+          `https://payroll-ms-backend.vercel.app/api/salary/${_id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
-          );
+        );
         if (res.data.success) {
           setSalaries(res.data.salaries);
           setEmployeeName(res.data.employeeName);

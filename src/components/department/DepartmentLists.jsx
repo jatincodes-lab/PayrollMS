@@ -5,22 +5,21 @@ import { columns, DepartmentButtons } from "../../utils/DepartmentHelper";
 import axios from "axios";
 
 const DepartmentLists = () => {
-const [rawDepartments, setRawDepartments] = useState([]);
-const [filteredDepartments, setFilteredDepartments] = useState([]);
+  const [rawDepartments, setRawDepartments] = useState([]);
+  const [filteredDepartments, setFilteredDepartments] = useState([]);
   const [depLoading, setDepLoading] = useState(false);
 
-    const onDepartmentDelete = (_id) => {
-      setRawDepartments((prev) => prev.filter((dep) => dep._id !== _id));
-      setFilteredDepartments((prev) => prev.filter((dep) => dep._id !== _id));
-    };
-  
+  const onDepartmentDelete = (_id) => {
+    setRawDepartments((prev) => prev.filter((dep) => dep._id !== _id));
+    setFilteredDepartments((prev) => prev.filter((dep) => dep._id !== _id));
+  };
 
   useEffect(() => {
     const fetchDepartments = async () => {
       setDepLoading(true);
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/department/getAll",
+          "https://payroll-ms-backend.vercel.app/api/department/getAll",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -92,7 +91,7 @@ const [filteredDepartments, setFilteredDepartments] = useState([]);
             <DataTable
               columns={columns}
               data={data}
-                pagination
+              pagination
               highlightOnHover
               responsive
               customStyles={{

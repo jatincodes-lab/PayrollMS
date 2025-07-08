@@ -4,13 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Details = () => {
   const [leaves, setLeaves] = useState(null);
-    const { id } = useParams();
-    const navigate = useNavigate();
+  const { id } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchLeave = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/leave/${id}`,
+          `https://payroll-ms-backend.vercel.app/api/leave/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -30,28 +30,28 @@ const Details = () => {
   }, [id]);
 
   if (!leaves)
-        return <p className="text-center text-gray-500">No data available</p>;
-    
-    const changeStatus = async (leaveId, newStatus) => {
-        try {
-          const response = await axios.put(
-            `http://localhost:3000/api/leave/${leaveId}`,
-            { status: newStatus },
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          );
+    return <p className="text-center text-gray-500">No data available</p>;
 
-            if (response.data.success) {
-                setLeaves(response.data.leave);
-                navigate("/adminDashboard/leaves");
-          }
-        } catch (error) {
-          console.error("Error fetching leaves:", error);
+  const changeStatus = async (leaveId, newStatus) => {
+    try {
+      const response = await axios.put(
+        `https://payroll-ms-backend.vercel.app/api/leave/${leaveId}`,
+        { status: newStatus },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
+      );
+
+      if (response.data.success) {
+        setLeaves(response.data.leave);
+        navigate("/adminDashboard/leaves");
+      }
+    } catch (error) {
+      console.error("Error fetching leaves:", error);
     }
+  };
 
   const { userId, leaveType, fromDate, toDate, description, status } = leaves;
   const days =
@@ -62,7 +62,7 @@ const Details = () => {
       {/* Employee Info */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
         <img
-          src={`http://localhost:3000/uploads/${userId?.profileImage}`}
+          src={`https://payroll-ms-backend.vercel.app/uploads/${userId?.profileImage}`}
           alt="Employee"
           className="w-32 h-32 object-cover rounded-full border-2 border-[#1F1C2C]"
         />

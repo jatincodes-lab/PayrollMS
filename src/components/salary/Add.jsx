@@ -6,21 +6,21 @@ import { getEmployees } from "../../utils/EmployeeHelper";
 const Add = () => {
   const { _id } = useParams();
   const navigate = useNavigate();
-    const [employee, setEmployee] = useState({
-        empId: null,
-        basicSalary: 0,
-        allowance: 0,
-        deduction: 0,
-        payDate: null,
+  const [employee, setEmployee] = useState({
+    empId: null,
+    basicSalary: 0,
+    allowance: 0,
+    deduction: 0,
+    payDate: null,
   });
   const [departments, setDepartments] = useState([]);
-    const[employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     // const fetchEmployee = async () => {
     //   try {
     //     const res = await axios.get(
-    //       `http://localhost:3000/api/employee/get/${_id}`,
+    //       `https://payroll-ms-backend.vercel.app/api/employee/get/${_id}`,
     //       {
     //         headers: {
     //           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,7 +50,7 @@ const Add = () => {
     const fetchDepartments = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/department/getAll",
+          "https://payroll-ms-backend.vercel.app/api/department/getAll",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -67,7 +67,7 @@ const Add = () => {
     fetchDepartments();
   }, [_id]);
 
-    const handleDepartment = async (e) => {
+  const handleDepartment = async (e) => {
     const emps = await getEmployees(e.target.value);
     setEmployees(emps);
   };
@@ -81,7 +81,7 @@ const Add = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/salary/add`,
+        `https://payroll-ms-backend.vercel.app/api/salary/add`,
         employee,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -186,7 +186,7 @@ const Add = () => {
             type="submit"
             className="bg-[#928DAB] text-[#1F1C2C] px-6 py-2 rounded-md font-semibold hover:bg-[#7c7a95] transition"
           >
-           + Add Salary
+            + Add Salary
           </button>
         </div>
       </form>

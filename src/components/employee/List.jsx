@@ -11,7 +11,7 @@ const List = () => {
     const fetchEmployees = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/employee/getAll",
+          "https://payroll-ms-backend.vercel.app/api/employee/getAll",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -89,14 +89,16 @@ const List = () => {
                 <td className="px-4 py-3">{emp.sno}</td>
                 <td className="px-4 py-3">
                   <img
-                    src={`http://localhost:3000/uploads/${emp.profileImage}`}
+                    src={`https://payroll-ms-backend.vercel.app/uploads/${emp.profileImage}`}
                     alt="profile"
                     className="w-10 h-10 object-cover rounded-full"
                   />
                 </td>
                 <td className="px-4 py-3">{emp.name}</td>
                 <td className="px-4 py-3">{emp.dep_name}</td>
-                <td className="px-4 py-3">{new Date(emp.dob).toLocaleDateString()}</td>
+                <td className="px-4 py-3">
+                  {new Date(emp.dob).toLocaleDateString()}
+                </td>
                 <td className="px-4 py-3">
                   <EmployeeButtons _id={emp._id} />
                 </td>

@@ -15,7 +15,7 @@ const Table = () => {
     const fetchLeaves = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/leave/getAll",
+          "https://payroll-ms-backend.vercel.app/api/leave/getAll",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -74,13 +74,13 @@ const Table = () => {
   ];
 
   // Filtered leaves for search and status
-    const filteredLeaves = leaves.filter((leave) => {
-      const searchMatch =
-        leave.name.toLowerCase().includes(filterText.toLowerCase()) ||
-        leave.leaveType.toLowerCase().includes(filterText.toLowerCase());
-      const statusMatch = statusFilter ? leave.status === statusFilter : true;
-      return searchMatch && statusMatch;
-    });
+  const filteredLeaves = leaves.filter((leave) => {
+    const searchMatch =
+      leave.name.toLowerCase().includes(filterText.toLowerCase()) ||
+      leave.leaveType.toLowerCase().includes(filterText.toLowerCase());
+    const statusMatch = statusFilter ? leave.status === statusFilter : true;
+    return searchMatch && statusMatch;
+  });
 
   return (
     <div>

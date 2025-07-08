@@ -27,7 +27,7 @@ const Setting = () => {
 
     try {
       const res = await axios.put(
-        "http://localhost:3000/api/employee/change-password",
+        "https://payroll-ms-backend.vercel.app/api/employee/change-password",
         formData,
         {
           headers: {

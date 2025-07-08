@@ -35,11 +35,10 @@ const AddEmployee = () => {
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
     });
-    
-    
+
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/employee/add",
+        "https://payroll-ms-backend.vercel.app/api/employee/add",
         formDataObj,
         {
           headers: {
